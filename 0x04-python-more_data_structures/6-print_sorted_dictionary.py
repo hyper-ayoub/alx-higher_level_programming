@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-
-
-
-#print_stored__dictionary - print a dictionary by ordered keys
 def print_sorted_dictionary(a_dictionary):
     sortList = sorted(a_dictionary.keys())
     for k in sortList:
