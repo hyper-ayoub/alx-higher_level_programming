@@ -1,9 +1,14 @@
 #!/usr/bin/python3
 
 
-# multiply_by_2 - returns a new dictionary with all values multiplied by two.
-def multiply_by_2(a_dictionary):
-    new_dict = a_dictionary.copy()
-    for i, j in new_dict.items():
-        new_dict[i] = j*2
-    return new_dict
+# best_score - retuns a key with the biggest integer value
+def best_score(a_dictionary):
+    if a_dictionary:
+        dlist = list(a_dictionary)
+        largK = dlist[0]
+        for i in dlist:
+            if a_dictionary[largK] < a_dictionary[i]:
+                largK = i
+        return largK
+    else:
+        return
