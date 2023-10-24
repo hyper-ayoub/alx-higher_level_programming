@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-""" Empty class Square """
+""" Module contains empty class Square """
+
 
 class Square:
-    """ This is a Square class """
+    """ This is an empty class. """
     pass
