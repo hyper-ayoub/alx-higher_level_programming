@@ -1,15 +1,13 @@
 #!/usr/bin/python3
-"""Add all arguments to a Python list and save them to a file."""
-import sys
+""" Module that returns the dictionary description with a simple
+data structure for a JSON serialization of an object
+"""
 
-if __name__ == "__main__":
-    save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
-    load_from_json_file = \
-        __import__('6-load_from_json_file').load_from_json_file
 
-    try:
-        items = load_from_json_file("add_item.json")
-    except FileNotFoundError:
-        items = []
-    items.extend(sys.argv[1:])
-    save_to_json_file(items, "add_item.json")
+def class_to_json(obj):
+    """ Function that retuns the dictionary description of an obj """
+
+    res = {}
+    if hasattr(obj, "__dict__"):
+        res = obj.__dict__.copy()
+    return res
