@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <wchar.h>
-#include <local.h>
+#include <locale.h>
 #include <Python.h>
 #include <unicodeobject.h>
 
