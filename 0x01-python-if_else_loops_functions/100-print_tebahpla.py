@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-# Author -Bamidele Adefolaju
-
-i = 0
-for c in range(ord('z'), ord('a') - 1, -1):
-    print("{}".format(chr(c - i)), end="")
-    i = 32 if i == 0 else 0
+for i in range(ord('z'), ord('a') - 1, -1):
+    if i % 2 == 0:
+        diff = 0
+    else:
+        diff = 32
+    print('{}'.format(chr(i - diff)), end='')
