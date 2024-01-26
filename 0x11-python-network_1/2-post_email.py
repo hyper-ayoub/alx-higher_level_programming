@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 2. POST an email #0 """
+""" Post an email """
 import urllib.request
 import urllib.parse
 import sys
