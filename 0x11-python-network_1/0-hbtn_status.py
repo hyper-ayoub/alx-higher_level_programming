@@ -1,14 +1,13 @@
 #!/usr/bin/python3
-"""0x11. Python - Network #1, task 0. What's my status? #0
-"""
+"""Python script that fetches https://intranet.hbtn.io/status"""
 
 if __name__ == "__main__":
-    from urllib import request
+    import urllib.request
 
-    with request.urlopen('https://intranet.hbtn.io/status') as response:
+    req = urllib.request.Request('https://alx-intranet.hbtn.io/status')
+    with urllib.request.urlopen(req) as response:
         html = response.read()
-    print('Body response:')
-    print('\t- type: {}'.format(type(html)))
-    print('\t- content: {}'.format(html))
-    print('\t- utf8 content: {}'.format(html.decode('utf-8')))
-    # charset can be gained with response.headers.get_content_charset()
+        print("Body response:")
+        print("\t- type:", type(html))
+        print("\t- content:", html)
+        print("\t- utf8 content:", html.decode('utf-8'))
