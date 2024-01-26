@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-""" 4-hbtn_status.py """
+""" What's my status? #1 """
 import requests
 
-url = 'https://alx-intranet.hbtn.io/status'
-response = requests.get(url)
-status_code = response.status_code
 
-if status_code == 200:
-    print("Body response:")
-    print("\t- type: {}".format(type(response.text)))
-    print("\t- content: {}".format(response.text.replace('\n', '\n\t\t')))
-else:
-    print("Error: Unable to fetch the URL. Status code:", status_code)
-
+if __name__ == "__main__":
+    url = "https://alx-intranet.hbtn.io/status"
+    res = requests.get(url)
+    data = res.text
+    resType = type(data)
+    print(f"Body response:\n\t- type: {resType}\n\t\
+- content: {data}")
