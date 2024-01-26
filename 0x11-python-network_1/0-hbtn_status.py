@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Python script that fetches https://intranet.hbtn.io/status"""
+"""Python script that fetches https://alx-intranet.hbtn.io/status """
 
 if __name__ == "__main__":
     import urllib.request
@@ -11,3 +11,4 @@ if __name__ == "__main__":
         print("\t- type:", type(html))
         print("\t- content:", html)
         print("\t- utf8 content:", html.decode('utf-8'))
+
