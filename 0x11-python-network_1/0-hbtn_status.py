@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Write a Python script that fetches https://alx-intranet.hbtn.io/status """
 
-if __name_ == "__main__":
+if __name__ == "__main__":
     import urllib.request
 
 
