@@ -9,4 +9,3 @@ if __name__ == "__main__":
     param = {"email": email}
     res = requests.post(url, data=param)
     print(res.text)
-
