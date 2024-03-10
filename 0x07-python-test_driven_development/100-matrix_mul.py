@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Module for matrix_mul method."""
 
-
 def matrix_mul(m_a, m_b):
     """Multiplies one matrix by another.
     Args:
