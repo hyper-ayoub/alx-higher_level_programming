@@ -1,23 +1,20 @@
 #!/usr/bin/python3
-
-
-"""Defines a matrix multiplication function."""
-
-
-
+"""Module for matrix_mul method."""
 
 def matrix_mul(m_a, m_b):
     """Multiply two matrices.
     Args:
-        m_a (list of lists of ints/floats): The first matrix.
-        m_b (list of lists of ints/floats): The second matrix.
-    Raises:
-        TypeError: If either m_a or m_b is not a list of lists of ints/floats.
-        TypeError: If either m_a or m_b is empty.
-        TypeError: If either m_a or m_b has different-sized rows.
-        ValueError: If m_a and m_b cannot be multiplied.
+        m_a: the first matrix
+        m_b: the second matrix
     Returns:
-        A new matrix representing the multiplication of m_a by m_b.
+        matrix: the product
+    Raises:
+        TypeError: If m_a or m_b are not lists.
+        TypeError: If m_a or m_b are not lists of lists.
+        ValueError: If m_a or m_b are empty lists/matrices.
+        TypeError: If m_a or m_b contain a non int/float.
+        TypeError: If m_a or m_b are not rectangular.
+        ValueError: If m_a or m_b can't be multiplied.
     """
 
 
@@ -77,3 +74,6 @@ def matrix_mul(m_a, m_b):
 
 
     return
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/100-matrix_mul.txt")
