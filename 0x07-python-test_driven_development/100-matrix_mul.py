@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """Module for matrix_mul method."""
 
+
 def matrix_mul(m_a, m_b):
     """Multiplies one matrix by another.
     Args:
         m_a: the first matrix
-        
+        m_b: the second matrix
     Returns:
         matrix: the product
     Raises:
@@ -76,7 +77,6 @@ def matrix_mul(m_a, m_b):
             res[i].append(c)
 
     return res
-
 
 if __name__ == "__main__":
     import doctest
