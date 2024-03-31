@@ -1,50 +1,44 @@
 #!/usr/bin/python3
-"""Module for matrix_mul method."""
+"""
+
+Multiplies 2 matrices.
+
+"""
 
 
 def matrix_mul(m_a, m_b):
-    """Multiplies one matrix by another.
+    """
+    Multiplies 2 matrices.
+
     Args:
-        m_a: the first matrix
-        m_b: the second matrix
+        m_a: The first matrix.
+        m_b: The second matrix.
+
     Returns:
-        matrix: the product
+        The multiplied matrix.
+
     Raises:
-        TypeError: If m_a or m_b are not lists.
-        TypeError: If m_a or m_b are not lists of lists.
-        ValueError: If m_a or m_b are empty lists/matrices.
-        TypeError: If m_a or m_b contain a non int/float.
-        TypeError: If m_a or m_b are not rectangular.
-        ValueError: If m_a or m_b can't be multiplied.
+        TypeError:  If m_a or m_b aren't a list.
+                    If m_a or m_b aren't a list of a lists.
+                    If the lists of m_a or m_b don't have integers or floats.
+                    If the rows of m_a or m_b don't have the same size.
+        ValueError: If m_a or m_b are empty.
+                    If m_a and m_b can't be multiplied.
     """
 
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
+
     if not isinstance(m_b, list):
         raise TypeError("m_b must be a list")
-    m_a_empty = False
-    m_b_empty = False
-    m_a_notrect = False
-    m_b_notrect = False
-    m_a_notnum = False
-    m_b_notnum = False
-    for row in m_a:
-        if not isinstance(row, list):
-            raise TypeError("m_a must be a list of lists")
-        if len(row) != len(m_a[0]):
-            m_a_notrect = True
-        for num in row:
-            if not isinstance(num, (int, float)):
-                m_a_notnum = True
 
-    for row in m_b:
-        if not isinstance(row, list):
+    for m_idx in m_a:
+        if not isinstance(m_idx, list):
+            raise TypeError("m_a must be a list of lists")
+
+    for m_idx in m_b:
+        if not isinstance(m_idx, list):
             raise TypeError("m_b must be a list of lists")
-        if len(row) != len(m_b[0]):
-            m_b_notrect = True
-        for num in row:
-            if not isinstance(num, (int, float)):
-                m_b_notnum = True
 
     if len(m_a) == 0 or (len(m_a) == 1 and len(m_a[0]) == 0):
         raise ValueError("m_a can't be empty")
@@ -52,33 +46,49 @@ def matrix_mul(m_a, m_b):
     if len(m_b) == 0 or (len(m_b) == 1 and len(m_b[0]) == 0):
         raise ValueError("m_b can't be empty")
 
-    if m_a_notnum:
-        raise TypeError("m_a should contain only integers or floats")
+    for m_idx in m_a:
+        for num in m_idx:
+            if not type(num) in (int, float):
+                raise TypeError("m_a should contain only integers or floats")
 
-    if m_b_notnum:
-        raise TypeError("m_b should contain only integers or floats")
+    for m_idx in m_b:
+        for num in m_idx:
+            if not type(num) in (int, float):
+                raise TypeError("m_b should contain only integers or floats")
 
-    if m_a_notrect:
-        raise TypeError("each row of m_a must should be of the same size")
+    length = 0
 
-    if m_b_notrect:
-        raise TypeError("each row of m_b must should be of the same size")
+    for m_idx in m_a:
+        if length != 0 and length != len(m_idx):
+            raise TypeError("each row of m_a must be of the same size")
+        length = len(m_idx)
+
+    length = 0
+
+    for m_idx in m_b:
+        if length != 0 and length != len(m_idx):
+            raise TypeError("each row of m_b must be of the same size")
+        length = len(m_idx)
 
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    res = [[] for i in range(len(m_a))]
+    main_m = []
+    idx_1 = 0
 
-    for i in range(len(m_a)):
-        for j in range(len(m_b[0])):
-            c = 0
-            for k in range(len(m_b)):
-                c += m_a[i][k] * m_b[k][j]
-            res[i].append(c)
+    for a in m_a:
+        child_m = []
+        idx_2 = 0
+        num = 0
+        while (idx_2 < len(m_b[0])):
+            num += a[idx_1] * m_b[idx_1][idx_2]
+            if idx_1 == len(m_b) - 1:
+                idx_1 = 0
+                idx_2 += 1
+                child_m.append(num)
+                num = 0
+            else:
+                idx_1 += 1
+        main_m.append(child_m)
 
-    return res
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testfile("tests/100-matrix_mul.txt")
+    return main_m
